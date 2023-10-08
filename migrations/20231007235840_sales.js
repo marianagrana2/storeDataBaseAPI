@@ -10,7 +10,7 @@ exports.up = function (knex) {
         table.string('client_name').notNullable()
         table.integer('unities_sale')
         table.text('description_product')
-        table.integer('total_sale')
+        table.decimal('total_sale', 12, 2)
         table.string('city').notNullable()
         table.boolean('active').defaultTo(true)
         table.timestamp('created_at').defaultTo(knex.fn.now())
