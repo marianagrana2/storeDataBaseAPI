@@ -21,9 +21,32 @@ const findOneClient = (request, response) => {
     })
 }
 
+// Eliminar POR COMPLETO un cliente
+const destroyOneClient = (request, response) => {
+  ModelClients.destroy(request.params.clientID)
+    .then((result) => {
+      result.status(204).send()
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error destroying client', error })
+    })
+}
+
+// Eliminar parcialmente un cliente
+const softDeleteOneClient = (request, response) => {
+  ModelClients.softDelete(request.params.clientID)
+    .then((result) => {
+      response.status(204).send()
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error deleting Client', error })
+    })
+}
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAllClients,
-  findOneClient
+  findOneClient,
+  destroyOneClient,
+  softDeleteOneClient
 
 }

@@ -5,6 +5,7 @@ const clientsController = require('../controllers/clientsController')
 // Routes a usar con la tabla clients
 router.get('/clients', clientsController.findAllClients)
 router.get('/clients/:clientID', clientsController.findOneClient)
-
+router.delete('/clients/destroy/:clientID', clientsController.destroyOneClient)
+router.delete('/clients/:clientID', clientsController.softDeleteOneClient)
 // Exportar el router
 module.exports = router

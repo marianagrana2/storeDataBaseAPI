@@ -5,5 +5,7 @@ const salesController = require('../controllers/salesController')
 // Routes a usar con la tabla sales
 router.get('/sales', salesController.findAllSales)
 router.get('/sales/:salesID', salesController.findOneSale)
+router.delete('/sales/destroy/:salesID', salesController.destroyOneSale)
+router.delete('/sales/:salesID', salesController.softDeleteOneSale)
 // Exportar el router
 module.exports = router

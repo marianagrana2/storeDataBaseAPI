@@ -20,9 +20,31 @@ const findOneSale = (request, response) => {
       response.status(400).send({ message: 'Error listing Sale', error })
     })
 }
+// Eliminar POR COMPLETO una venta
+const destroyOneSale = (request, response) => {
+  ModelSales.destroy(request.params.salesID)
+    .then((result) => {
+      result.status(204).send()
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error destroying sale', error })
+    })
+}
+// Eliminar parcialmente una venta
+const softDeleteOneSale = (request, response) => {
+  ModelSales.softDelete(request.params.salesID)
+    .then((result) => {
+      response.status(204).send()
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error deleting Sale', error })
+    })
+}
 
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAllSales,
-  findOneSale
+  findOneSale,
+  destroyOneSale,
+  softDeleteOneSale
 }
