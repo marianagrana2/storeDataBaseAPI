@@ -12,3 +12,6 @@ app.use('/api/v1', productsRoutes)
 
 const clientsRoutes = require('./routes/clientsRoutes')
 app.use('/api/v1', clientsRoutes)
+
+const salesRoutes = require('./routes/salesRoutes')
+app.use('/api/v1', salesRoutes)
