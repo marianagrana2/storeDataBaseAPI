@@ -19,7 +19,7 @@ const findOne = (salesID) => {
 // Eliminar POR COMPLETO una Venta
 const destroy = (salesID) => {
   return knex
-    .select('*')
+    .del()
     .from('sales')
     .where({ sale_id: salesID })
 }

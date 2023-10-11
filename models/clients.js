@@ -19,7 +19,7 @@ const findOne = (clientID) => {
 // Eliminar POR COMPLETO un cliente
 const destroy = (clientID) => {
   return knex
-    .select('*')
+    .del()
     .from('clients')
     .where({ client_id: clientID })
 }

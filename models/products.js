@@ -18,7 +18,7 @@ const findOne = (productID) => {
 // Eliminar POR COMPLETO un Producto
 const destroy = (productID) => {
   return knex
-    .select('*')
+    .del()
     .from('products')
     .where({ product_id: productID })
 }
