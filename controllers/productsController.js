@@ -24,7 +24,7 @@ const findOneProduct = (request, response) => {
 const destroyOneProduct = (request, response) => {
   ModelProducts.destroy(request.params.productID)
     .then((result) => {
-      result.status(204).send()
+      response.status(204).send()
     })
     .catch((error) => {
       response.status(400).send({ message: 'Error destroying product', error })
