@@ -7,5 +7,6 @@ router.get('/products', productsController.findAllProducts)
 router.get('/products/:productID', productsController.findOneProduct)
 router.delete('/products/destroy/:productID', productsController.destroyOneProduct)
 router.delete('/products/:productID', productsController.softDeleteOneProduct)
+router.post('/products', productsController.createProduct)
 // Exportar el router
 module.exports = router

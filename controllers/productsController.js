@@ -41,10 +41,23 @@ const softDeleteOneProduct = (request, response) => {
       response.status(400).send({ message: 'Error deleting Product', error })
     })
 }
+
+// Agregar Producto
+const createProduct = (request, response) => {
+  ModelProducts.create(request.body)
+    .then((result) => {
+      response.status(201).send({ message: 'Product created', data: result })
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error creating Product', error })
+    })
+}
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAllProducts,
   findOneProduct,
   destroyOneProduct,
-  softDeleteOneProduct
+  softDeleteOneProduct,
+  createProduct
+
 }

@@ -29,10 +29,19 @@ const softDelete = (productID) => {
     .from('products')
     .where({ product_id: productID })
 }
+
+// Crear un producto
+const create = (body) => {
+  return knex
+    .insert(body)
+    .into('products')
+    .returning(['product_id', 'name', 'description', 'product_price', 'sku'])
+}
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAll,
   findOne,
   destroy,
-  softDelete
+  softDelete,
+  create
 }
