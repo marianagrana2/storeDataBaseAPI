@@ -15,4 +15,4 @@ Este es un proyecto el cual trata de una base de datos creada para una empresa f
 - Utilizar seeds para poblar una base de datos.
 - Crear una API local utilizando una base de datos igual local.
 - Crear Rutas para mostrar, eliminar y agregar productos, clientes y ventas de una base de datos. 
-- Utilizar la arquitectur MVC(Modelo,Vista, Controlador) en un proyecto.
+- Utilizar la arquitectura MVC(Modelo,Vista, Controlador) en un proyecto.
