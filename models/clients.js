@@ -30,10 +30,18 @@ const softDelete = (clientID) => {
     .from('clients')
     .where({ client_id: clientID })
 }
+// Crear un cliente
+const create = (body) => {
+  return knex
+    .insert(body)
+    .into('clients')
+    .returning(['client_id', 'name', 'last_name', 'email', 'phone', 'address', 'district', 'zip', 'city'])
+}
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAll,
   findOne,
   destroy,
-  softDelete
+  softDelete,
+  create
 }

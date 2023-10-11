@@ -42,11 +42,22 @@ const softDeleteOneClient = (request, response) => {
       response.status(400).send({ message: 'Error deleting Client', error })
     })
 }
+// Agregar Cliente
+const createClient = (request, response) => {
+  ModelClients.create(request.body)
+    .then((result) => {
+      response.status(201).send({ message: 'Client created', data: result })
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error creating Client', error })
+    })
+}
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAllClients,
   findOneClient,
   destroyOneClient,
-  softDeleteOneClient
+  softDeleteOneClient,
+  createClient
 
 }

@@ -7,5 +7,6 @@ router.get('/clients', clientsController.findAllClients)
 router.get('/clients/:clientID', clientsController.findOneClient)
 router.delete('/clients/destroy/:clientID', clientsController.destroyOneClient)
 router.delete('/clients/:clientID', clientsController.softDeleteOneClient)
+router.post('/clients', clientsController.createClient)
 // Exportar el router
 module.exports = router
