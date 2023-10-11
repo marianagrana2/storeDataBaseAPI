@@ -25,7 +25,7 @@ const findOneClient = (request, response) => {
 const destroyOneClient = (request, response) => {
   ModelClients.destroy(request.params.clientID)
     .then((result) => {
-      result.status(204).send()
+      response.status(204).send()
     })
     .catch((error) => {
       response.status(400).send({ message: 'Error destroying client', error })
