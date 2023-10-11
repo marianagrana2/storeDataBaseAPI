@@ -40,11 +40,21 @@ const softDeleteOneSale = (request, response) => {
       response.status(400).send({ message: 'Error deleting Sale', error })
     })
 }
-
+// Agregar Venta
+const createSale = (request, response) => {
+  ModelSales.create(request.body)
+    .then((result) => {
+      response.status(201).send({ message: 'Sale created', data: result })
+    })
+    .catch((error) => {
+      response.status(400).send({ message: 'Error creating Sale', error })
+    })
+}
 // Exportar las funciones para usarlas en otra parte del código
 module.exports = {
   findAllSales,
   findOneSale,
   destroyOneSale,
-  softDeleteOneSale
+  softDeleteOneSale,
+  createSale
 }

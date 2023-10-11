@@ -7,5 +7,6 @@ router.get('/sales', salesController.findAllSales)
 router.get('/sales/:salesID', salesController.findOneSale)
 router.delete('/sales/destroy/:salesID', salesController.destroyOneSale)
 router.delete('/sales/:salesID', salesController.softDeleteOneSale)
+router.post('/sales', salesController.createSale)
 // Exportar el router
 module.exports = router
