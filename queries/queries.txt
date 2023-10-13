@@ -1,0 +1,56 @@
+QUERIES DE CONSULTA A BASE DE DATOS DON RUFINO
+
+1. ID CLIENTES MONTERREY
+
+SELECT client_id 
+FROM clients
+WHERE city = 'Monterrey'
+
+
+2.ID & DESCRIPCIÓN PRODUCTOS MENORES A $15 MXN
+
+SELECT product_id, description, product_price
+FROM products
+WHERE product_price < 15
+
+
+3.ID ,NOMBRE CLIENTES, CANTIDAD VENDIDA Y DESCRIPCIÓN DEL PRODUCTO VENTAS SUPERIORES A 10 UNIDADES
+
+SELECT fk_client, client_name, unities_sale, description_product
+FROM sales
+WHERE unities_sale > 10
+
+
+4. ID & NOMBRE CLIENTES SIN COMPRAS
+SELECT clients.client_id, clients.name
+FROM clients
+LEFT JOIN sales ON clients.client_id = sales.fk_client_id
+WHERE sales.fk_client_id IS NULL 
+
+
+5.ID & NOMBRE CLIENTE Y SUMA TOTAL DE LOS PRODUCTOS QUE HA COMPRADO
+SELECT clients.client_id, clients.name, SUM(sales.total_sale) AS total_sales
+FROM clients
+LEFT JOIN sales ON  clients.client_id = sales.fk_client
+GROUP BY clients.client_id, clients.name
+
+
+6.ID PRODUCTOS NO COMPRADOS EN GUADALAJARA
+
+SELECT fk_product
+FROM sales
+WHERE city != 'Guadalajara' 
+
+
+7. ID PRODUCTOS VENDIDOS EN MONTERREY & CANCUN
+
+SELECT fk_product
+FROM sales
+WHERE city = 'Monterrey' OR city='Cancun'
+
+
+8. NOMBRE CIUDADES VENDIDOS TODOS LOS PRODUCTOS
+SELECT city
+FROM sales
+GROUP BY city
+HAVING COUNT ( DISTINCT fk_product) = (SELECT COUNT ( DISTINCT product_id) FROM products WHERE active = true)
